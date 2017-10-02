@@ -1,0 +1,44 @@
+if has('win32')
+    colorscheme desert
+    set guioptions-=T                    " ツールバー非表示
+    " set showtabline=2                      " タブを常に表示
+
+    " フォントを設定
+"    set guifont=Inconsolata
+"    set guifontwide=TakaoGothic
+
+
+    " 縦幅, 横幅を設定
+    set columns=120
+    set lines=35
+
+    nnoremap <silent> gs :SM 4<CR>
+    nnoremap <silent> gS :set columns=120<CR>:set lines=35<CR>
+
+    " カーソル行をハイライト
+    set cursorline
+    highlight CursorLine term=reverse cterm=reverse
+
+    " IMEの状態によって色を変更
+    if has('multi_byte_ime')
+"    if has('multi_byte_ime') || has('xim')
+"      highlight Cursor guifg=NONE guibg=Green
+      highlight CursorIM guifg=NONE guibg=Purple
+    endif
+
+    " 画面の透過設定
+    gui
+    set transparency=220
+
+    " タブを閉じる
+    map <silent> ge :tabclose<CR>
+
+    " ステータスラインに追加情報を表示
+    "set statusline=%F%m%r%h%w\%=\[\%{&ff}\]\[%{&fileencoding}\]\[%l,%v\]
+    set statusline=%f%=%<%m%r[%{(&fenc!=''?&fenc:&enc)}/%{&ff}][%04v,%04l][%p%%]
+    "set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
+
+    " ステータスラインを常に表示
+    set laststatus=2
+
+endif
